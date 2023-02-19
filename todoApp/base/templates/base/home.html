@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Load style -->
+    {% load static %}
+    <link href="{% static '/CSS/style.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <form method="POST" action="/">
+            {% csrf_token %}
+            {{form.title}}
+            <input type="submit" value="CREATE"/>
+        </form>
+
+        {% for task in tasks %}
+            <div class="tasks-container">
+                {% if task.complete == True %}
+                <strike>{{task}}</strike>
+                {% else %}
+                <span>{{task}}</span>
+                {% endif %}
+                <div class="buttons-container">
+                    <a href="{% url 'Update' task.id %}" class="update">Update</a>
+                    <a href="{% url 'Delete' task.id %}" class="delete">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

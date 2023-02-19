@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-wrapper {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.main-wrapper p {
+    font-size: 1.2rem;
+}
+
+.main-wrapper form{
+    display: grid;
+    row-gap: 0.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.main-wrapper form input[type="text"] {
+    background-color: #eeeeee;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.main-wrapper form input[type="submit"] {
+    background-color: #252422;
+    color: #eb5e28;
+    padding: 0.8rem 0;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.main-wrapper form input[type="submit"]:hover {
+    background-color: #403d39;
+}
+
+.main-wrapper form input[type="checkbox"] {
+    background-color: red;
+}
+
+
+.tasks-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 1rem 0.5rem;
+    border-radius: 5px;
+}
+
+.tasks-container:nth-child(odd) {
+    background-color: #252422;
+    color: #eb5e28;
+}
+
+.tasks-container strike {
+    color: #6d6875;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 1rem;
+}
+
+
+.update {
+    background-color: #52b69a;
+    color: #ffffff;
+    text-decoration: none;
+    width: 90px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.update:hover {
+    background-color: #248f71;
+    color: #ffffff;
+}
+
+.delete {
+    background-color: #ff4d6d;
+    color: #ffffff;
+    text-decoration: none;
+    width: 90px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.delete:hover {
+    background-color: #cf2846;
+    color: #ffffff;
+}
+
+.cancel {
+    background-color: #52b69a;
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    margin: 2.5rem 0 0.5rem;
+}
+
+.cancel:hover {
+    background-color: #248f71;
+    color: #ffffff;
+}

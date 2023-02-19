@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django #1 Test</title>
+
+    <!-- Load style -->
+    {% load static %}
+    <link href="{% static '/CSS/style.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+
+        <div class="avatar-container">
+            <!-- Image link, https://unsplash.com/photos/PRI_epwGpAw -->
+            <img src="{% static 'images/icon.jpg' %}" alt="Avatar"/>
+            <div class="avatar-text">
+                <h1>Hello there!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+            </div>
+        </div>
+
+        <div class="about-container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Ornare quam viverra orci sagittis eu. Euismod quis viverra nibh cras pulvinar. Imperdiet proin fermentum leo vel. Sit amet purus gravida quis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="social-container">
+                <img src="{% static 'images/facebook.png' %}" alt="Facebook"/>
+                <img src="{% static 'images/linkedin.png' %}" alt="Linkedin"/>
+                <img src="{% static 'images/youtube.png' %}" alt="YouTube"/>
+                <img src="{% static 'images/twitter.png' %}" alt="Twitter"/>
+            </div>
+        </div>
+
+    </header>
+    <main>
+
+        <div class="group-container">
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Ornare quam viverra orci sagittis eu. Euismod quis viverra nibh cras pulvinar. Imperdiet proin fermentum leo vel. Sit amet purus gravida quis.</p>
+        </div>
+
+        <div class="group-container">
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Ornare quam viverra orci sagittis eu. Euismod quis viverra nibh cras pulvinar. Imperdiet proin fermentum leo vel. Sit amet purus gravida quis.</p>
+        </div>
+
+        <div class="group-container">
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Ornare quam viverra orci sagittis eu. Euismod quis viverra nibh cras pulvinar. Imperdiet proin fermentum leo vel. Sit amet purus gravida quis.</p>
+        </div>
+
+        <div class="group-container">
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Ornare quam viverra orci sagittis eu. Euismod quis viverra nibh cras pulvinar. Imperdiet proin fermentum leo vel. Sit amet purus gravida quis.</p>
+        </div>
+
+    </main>
+</body>
+</html>

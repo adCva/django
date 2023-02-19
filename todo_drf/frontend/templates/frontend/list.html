@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="task-container">
+
+            <div class="form-wrapper">
+                <form id="form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Add task..." name="title" id="title"/>
+                        <input type="submit" value="submit"/>
+                    </div>
+                </form>
+            </div>
+
+            <div class="list-wrapper"></div>
+
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+		function getCookie(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getCookie('csrftoken');
+
+        let activeItem = null;
+
+        function buildList() {
+            const wrapper = document.querySelector(".list-wrapper");
+            wrapper.innerHTML = '';
+
+            const url = 'http://127.0.0.1:8000/api/task-list/';
+            fetch(url)
+            .then((resp) => resp.json())
+            .then((data) => {
+                let listData = data;
+
+
+                for (let i in listData) {
+                    let isCompleted = `<h2 onclick='completeItem(${JSON.stringify(listData[i])})'>${listData[i].title}</h2>`;
+
+                    if (listData[i].completed) {
+                        isCompleted = `<strike onclick='completeItem(${JSON.stringify(listData[i])})'>${listData[i].title}</strike>`;
+                    }
+
+                    let item = `
+                        <div class="item-container" id=${listData[i].id}>
+                            ${isCompleted}
+                            <button class="edit" onclick='editItem(${JSON.stringify(listData[i])})'>Edit</button>
+                            <button class="delete" onclick='deleteItem(${listData[i].id})'>Delete</button>
+                        </div>
+                    `;
+                    wrapper.innerHTML += item;
+                }
+
+            })
+        };
+
+        buildList();
+
+
+        function editItem(item) {
+            activeItem = item;
+            document.getElementById('title').value = activeItem.title;
+        };
+
+        function deleteItem(id) {
+            fetch(`http://127.0.0.1:8000/api/task-delete/${id}/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRFToken':csrftoken,
+                }
+            }).then((res) => buildList())
+        };
+
+        function completeItem(item) {
+            fetch(`http://127.0.0.1:8000/api/task-update/${item.id}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRFToken':csrftoken,
+                },
+                body: JSON.stringify({
+                    'title':item.title,
+                    'completed': !item.completed
+                })
+            }).then((res) => buildList())
+        }
+
+
+        const form = document.querySelector('.form-wrapper');
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let url = 'http://127.0.0.1:8000/api/task-create/';
+            const title = document.getElementById('title').value;
+
+            if (activeItem !== null) {
+                url = `http://127.0.0.1:8000/api/task-update/${activeItem.id}/`;
+                activeItem = null;
+            }
+
+            fetch(
+                url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json',
+                        'X-CSRFToken':csrftoken,
+                    },
+                    body: JSON.stringify({'title': title})
+                }
+            ).then((resp) => {
+                buildList()
+                document.getElementById('form').reset();
+            })
+
+        })
+
+
+    </script>
+</body>
+</html> 
